@@ -1,0 +1,27 @@
+/*
+ *
+ * BooleanBite: Ejemplo de uso de Sensor de Ultrasonidos.
+ * Codigo con licencia Libre
+ */
+#include < ultrasonic.h > //Libreria Ultrasonic
+#define LED 5 //pin del Led
+#define TRIM 9 //pin para TRIM
+#define ECHO 10 //pin para ECHO
+ 
+Ultrasonic ultrasonic(TRIM,ECHO); //Inicializacion de la libreria
+ 
+void setup() {
+  pinMode(LED,OUTPUT);//preparacion del LED
+ 
+}
+ 
+void loop() {
+float distance= ultrasonic.Ranging(CM); //Obtencion de la distancia en Centimentros
+ 
+ if(distance < 21.0){//Si la distancia es menor que 21  
+   digitalWrite(LED,HIGH); //Encendemos Led(Alarma Activada)
+  }else{//SIno: distancia &gt;= 21 cm
+    digitalWrite(LED,LOW); //ApagamosLed(Alarma Apagada)
+ }
+ 
+ delay(250); //Esperamos 250ms para otra pasada
